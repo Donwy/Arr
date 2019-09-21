@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">sdk</string>
+    <string-array name="flow_values">
+        <item>50M</item>
+        <item>100M</item>
+        <item>200M</item>
+        <item>500M</item>
+    </string-array>
+</resources>
