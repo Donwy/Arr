@@ -1,18 +1,597 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/group_edit_delete_line"
     tools:context=".MainActivity">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <RelativeLayout
+                android:id="@+id/getServerIp_rel"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/menu_bg_ripple"
+                android:clickable="true">
 
+                <TextView
+                    android:id="@+id/getServerIp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:text="getServerIp"
+                    android:textColor="@color/cu_text_color"
+                    android:textSize="16sp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"
+                    android:src="@drawable/icon_arrow_3x" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginLeft="10dp"
+                    android:background="@color/group_edit_delete_line" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/registeredUsers_rel"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/menu_bg_ripple"
+                android:clickable="true">
+
+                <TextView
+                    android:id="@+id/registeredUsers"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:text="registeredUsers"
+                    android:textColor="@color/cu_text_color"
+                    android:textSize="16sp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"
+                    android:src="@drawable/icon_arrow_3x" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginLeft="10dp"
+                    android:background="@color/group_edit_delete_line" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/retransmitVerificationCode_rel"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/menu_bg_ripple"
+                android:clickable="true">
+
+                <TextView
+                    android:id="@+id/retransmitVerificationCode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:text="retransmitVerificationCode"
+                    android:textColor="@color/cu_text_color"
+                    android:textSize="16sp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"
+                    android:src="@drawable/icon_arrow_3x" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginLeft="10dp"
+                    android:background="@color/group_edit_delete_line" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/userLogin_rel"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/menu_bg_ripple"
+                android:clickable="true">
+
+                <TextView
+                    android:id="@+id/userLogin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:text="userLogin"
+                    android:textColor="@color/cu_text_color"
+                    android:textSize="16sp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"
+                    android:src="@drawable/icon_arrow_3x" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginLeft="10dp"
+                    android:background="@color/group_edit_delete_line" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/forgetPassword_rel"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/menu_bg_ripple"
+                android:clickable="true">
+
+                <TextView
+                    android:id="@+id/forgetPassword"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:text="forgetPassword"
+                    android:textColor="@color/cu_text_color"
+                    android:textSize="16sp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"
+                    android:src="@drawable/icon_arrow_3x" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginLeft="10dp"
+                    android:background="@color/group_edit_delete_line" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/checkUserAccount_rel"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/menu_bg_ripple"
+                android:clickable="true">
+
+                <TextView
+                    android:id="@+id/checkUserAccount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:text="checkUserAccount"
+                    android:textColor="@color/cu_text_color"
+                    android:textSize="16sp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"
+                    android:src="@drawable/icon_arrow_3x" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginLeft="10dp"
+                    android:background="@color/group_edit_delete_line" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/userInfo_rel"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/menu_bg_ripple"
+                android:clickable="true">
+
+                <TextView
+                    android:id="@+id/userInfo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:text="userInfo"
+                    android:textColor="@color/cu_text_color"
+                    android:textSize="16sp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"
+                    android:src="@drawable/icon_arrow_3x" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginLeft="10dp"
+                    android:background="@color/group_edit_delete_line" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/modifyUserNickname_rel"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/menu_bg_ripple"
+                android:clickable="true">
+
+                <TextView
+                    android:id="@+id/modifyUserNickname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:text="modifyUserNickname"
+                    android:textColor="@color/cu_text_color"
+                    android:textSize="16sp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"
+                    android:src="@drawable/icon_arrow_3x" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginLeft="10dp"
+                    android:background="@color/group_edit_delete_line" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/modifyHead_rel"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/menu_bg_ripple"
+                android:clickable="true">
+
+                <TextView
+                    android:id="@+id/modifyHead"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:text="modifyHead"
+                    android:textColor="@color/cu_text_color"
+                    android:textSize="16sp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"
+                    android:src="@drawable/icon_arrow_3x" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginLeft="10dp"
+                    android:background="@color/group_edit_delete_line" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/deviceGroup_rel"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/menu_bg_ripple"
+                android:clickable="true">
+
+                <TextView
+                    android:id="@+id/deviceGroup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:text="getDeviceGroup"
+                    android:textColor="@color/cu_text_color"
+                    android:textSize="16sp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"
+                    android:src="@drawable/icon_arrow_3x" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginLeft="10dp"
+                    android:background="@color/group_edit_delete_line" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/deleteGroup_rel"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/menu_bg_ripple"
+                android:clickable="true">
+
+                <TextView
+                    android:id="@+id/deleteGroup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:text="deleteGroup"
+                    android:textColor="@color/cu_text_color"
+                    android:textSize="16sp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"
+                    android:src="@drawable/icon_arrow_3x" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginLeft="10dp"
+                    android:background="@color/group_edit_delete_line" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/modifyGroupName_rel"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/menu_bg_ripple"
+                android:clickable="true">
+
+                <TextView
+                    android:id="@+id/modifyGroupName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:text="modifyGroupName"
+                    android:textColor="@color/cu_text_color"
+                    android:textSize="16sp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"
+                    android:src="@drawable/icon_arrow_3x" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginLeft="10dp"
+                    android:background="@color/group_edit_delete_line" />
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/addDeviceGroup_rel"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/menu_bg_ripple"
+                android:clickable="true">
+
+                <TextView
+                    android:id="@+id/addDeviceGroup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:text="addDeviceGroup"
+                    android:textColor="@color/cu_text_color"
+                    android:textSize="16sp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"
+                    android:src="@drawable/icon_arrow_3x" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginLeft="10dp"
+                    android:background="@color/group_edit_delete_line" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/theBoundDeviceList_rel"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/menu_bg_ripple"
+                android:clickable="true">
+
+                <TextView
+                    android:id="@+id/theBoundDeviceList"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:text="theBoundDeviceList"
+                    android:textColor="@color/cu_text_color"
+                    android:textSize="16sp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"
+                    android:src="@drawable/icon_arrow_3x" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginLeft="10dp"
+                    android:background="@color/group_edit_delete_line" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/deleteDevice_rel"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/menu_bg_ripple"
+                android:clickable="true">
+
+                <TextView
+                    android:id="@+id/deleteDevice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:text="deleteDevice"
+                    android:textColor="@color/cu_text_color"
+                    android:textSize="16sp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"
+                    android:src="@drawable/icon_arrow_3x" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginLeft="10dp"
+                    android:background="@color/group_edit_delete_line" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/modifyDeviceName_rel"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/menu_bg_ripple"
+                android:clickable="true">
+
+                <TextView
+                    android:id="@+id/modifyDeviceName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:text="modifyDeviceName"
+                    android:textColor="@color/cu_text_color"
+                    android:textSize="16sp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"
+                    android:src="@drawable/icon_arrow_3x" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginLeft="10dp"
+                    android:background="@color/group_edit_delete_line" />
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/bindDeviceForSN_rel"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/menu_bg_ripple"
+                android:clickable="true">
+
+                <TextView
+                    android:id="@+id/bindDeviceForSN"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:text="bindDeviceForSN"
+                    android:textColor="@color/cu_text_color"
+                    android:textSize="16sp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"
+                    android:src="@drawable/icon_arrow_3x" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginLeft="10dp"
+                    android:background="@color/group_edit_delete_line" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/DeviceInfoWithSN_rel"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/menu_bg_ripple"
+                android:clickable="true">
+
+                <TextView
+                    android:id="@+id/DeviceInfoWithSN"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:text="getDeviceInfoWithSN"
+                    android:textColor="@color/cu_text_color"
+                    android:textSize="16sp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"
+                    android:src="@drawable/icon_arrow_3x" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginLeft="10dp"
+                    android:background="@color/group_edit_delete_line" />
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
