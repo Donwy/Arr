@@ -1,4 +1,4 @@
-package com.example.arr;
+package com.example.arr.activity;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -11,6 +11,7 @@ import android.widget.RelativeLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.arr.R;
 import com.example.sdk.BitvisionSdk;
 import com.gzch.lsplat.work.mode.UserInfo;
 import com.gzch.lsplat.work.mode.event.DeviceList;
@@ -343,7 +344,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     //Registered users (用户注册)
     private void getRegisteredUsers() {
         info = "Registered users";
-        Intent intent = new Intent(MainActivity.this, RegisteredUsers.class);
+        Intent intent = new Intent(MainActivity.this, RegisteredUsersActivity.class);
         startActivity(intent);
     }
 

@@ -1,4 +1,4 @@
-package com.example.arr;
+package com.example.arr.activity;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.arr.R;
 import com.example.sdk.BitvisionSdk;
 import com.longse.lsapc.lsacore.mode.Result;
 
@@ -19,9 +20,9 @@ import org.greenrobot.eventbus.ThreadMode;
  * @author Donvy_y
  * @date 2019/9/30
  */
-public class RegisteredUsers extends AppCompatActivity implements View.OnClickListener {
+public class RegisteredUsersActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private static final String TAG = "RegisteredUsers";
+    private static final String TAG = "RegisteredUsersActivity";
     private EditText mAccount;
     private EditText mInputPsw;
     private EditText mInputCode;
