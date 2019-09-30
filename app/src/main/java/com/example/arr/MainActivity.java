@@ -1,9 +1,11 @@
 package com.example.arr;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Base64;
+import android.util.Log;
 import android.view.View;
 import android.widget.RelativeLayout;
 
@@ -25,6 +27,7 @@ import java.io.InputStream;
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+    private static final String TAG = "MainActivity";
     private RelativeLayout getServerIpRel;
     private RelativeLayout registeredUsersRel;
     private RelativeLayout retransmitVerificationCodeRel;
@@ -261,11 +264,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             InputStream inputStream = getResources().getAssets().open("img_head.jpg");
             Bitmap image = BitmapFactory.decodeStream(inputStream);
             String imgPath =  bitmapToString(image);
-//            System.out.println("info123 " + image + ",\n "+imgPath);
             inputStream.close();
 
-//            String imgPath = "assets://image.png";
-//            String imgPath= "drawable://" + R.drawable.img_head;
             BitvisionSdk.modifyHead(imgPath);
         }catch (Exception e) {
             e.printStackTrace();
@@ -275,9 +275,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private String bitmapToString(Bitmap bitmap) {
         String string = null;
         ByteArrayOutputStream bStream = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.JPEG,100,bStream);
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bStream);
         byte[]bytes = bStream.toByteArray();
-        string = Base64.encodeToString(bytes,Base64.DEFAULT);
+        string = Base64.encodeToString(bytes, Base64.DEFAULT);
         return string;
     }
 
@@ -333,22 +333,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     //Retransmit Verification Code (重发验证码--1)
     private void getRetransmitVerificationCode() {
-        try{
-            info = "重发验证码";
-            BitvisionSdk.retransmitVerificationCode("d572419921@163.com");
-        }catch (Exception e) {
-            e.printStackTrace();
-        }
+//        try{
+//            info = "重发验证码";
+//            BitvisionSdk.retransmitVerificationCode("d572419921@163.com");
+//        }catch (Exception e) {
+//            e.printStackTrace();
+//        }
     }
 
-    //Registered users (用户注册--1)
+    //Registered users (用户注册)
     private void getRegisteredUsers() {
-        try{
-            info = "用户注册";
-            BitvisionSdk.registeredUsers("d572419@163.com", "b12345600", "7775");
-        }catch (Exception e) {
-            e.printStackTrace();
-        }
+        info = "Registered users";
+        Intent intent = new Intent(MainActivity.this, RegisteredUsers.class);
+        startActivity(intent);
     }
 
     //Get Area Server Address (获取区域服务器地址--1)
@@ -365,32 +362,33 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Subscribe
     public void getResult(Result result) {
-        System.out.println( "输出结果: "+ info+" >>>> " + result);
+        Log.d(TAG, "getResult: "+ info+" >>>> " + result);
+
     }
 
     @Subscribe
     public void getResult(SerialNumberDeviceInfoEvent result) {
-        System.out.println( "输出结果: "+ info+" >>>> " + result);
+        Log.d(TAG, "getResult: "+ info+" >>>> " + result);
     }
 
     @Subscribe
     public void getResult(LoginHistoryEvent result) {
-        System.out.println( "输出结果: "+ info+" >>>> " + result);
+        Log.d(TAG, "getResult: "+ info+" >>>> " + result);
     }
 
     @Subscribe
     public void getResult(UserInfo result) {
-        System.out.println( "输出结果: "+ info+" >>>> " + result);
+        Log.d(TAG, "getResult: "+ info+" >>>> " + result);
     }
 
     @Subscribe
     public void getResult(GroupList result) {
-        System.out.println( "输出结果: "+ info+" >>>> " + result);
+        Log.d(TAG, "getResult: "+ info+" >>>> " + result);
     }
 
     @Subscribe
     public void getResult(DeviceList result) {
-        System.out.println( "输出结果: "+ info+" >>>> " + result);
+        Log.d(TAG, "getResult: "+ info+" >>>> " + result);
     }
 
 

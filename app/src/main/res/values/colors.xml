@@ -8,4 +8,9 @@
     <color name="ripple">#60000000</color>
     <color name="cu_text_color">#333333</color>
     <color name="group_edit_delete_line">#e5e5e5</color>
+    <color name="text_choose_false">#999999</color>
+    <color name="hint_text_color">#666666</color>
+    <color name="view_color">#cccccc</color>
+    <color name="title_red">#e60012</color>
+    <color name="line_color">#e6e6e6</color>
 </resources>
