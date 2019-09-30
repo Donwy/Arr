@@ -1,6 +1,7 @@
 package com.example.arr;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -8,6 +9,11 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.sdk.BitvisionSdk;
+import com.longse.lsapc.lsacore.mode.Result;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 /**
  * @author Donvy_y
@@ -15,15 +21,18 @@ import com.example.sdk.BitvisionSdk;
  */
 public class RegisteredUsers extends AppCompatActivity implements View.OnClickListener {
 
+    private static final String TAG = "RegisteredUsers";
     private EditText mAccount;
     private EditText mInputPsw;
     private EditText mInputCode;
     private TextView mCaptcha;
     private TextView mRegister;
+    private TextView mResult;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        EventBus.getDefault().register(this);
         setContentView(R.layout.activity_registeredusers);
         initView();
     }
@@ -34,6 +43,7 @@ public class RegisteredUsers extends AppCompatActivity implements View.OnClickLi
         mInputCode = findViewById(R.id.input_code);
         mCaptcha = findViewById(R.id.captcha);
         mRegister = findViewById(R.id.register);
+        mResult = findViewById(R.id.show_result);
 
         mAccount.setOnClickListener(this);
         mInputPsw.setOnClickListener(this);
@@ -65,6 +75,18 @@ public class RegisteredUsers extends AppCompatActivity implements View.OnClickLi
         String psw = mInputPsw.getText().toString().trim();
         String code = mInputCode.getText().toString().trim();
         BitvisionSdk.registeredUsers(account, psw, code);
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void getResult(Result result) {
+        Log.d(TAG, "getResult: registerUsers >>>> " + result);
+        mResult.setText("RegisteredUser >>> \n" + result.toString());
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
     }
 }
 

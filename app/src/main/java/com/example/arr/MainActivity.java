@@ -17,7 +17,6 @@ import com.gzch.lsplat.work.mode.event.DeviceList;
 import com.gzch.lsplat.work.mode.event.GroupList;
 import com.gzch.lsplat.work.mode.event.LoginHistoryEvent;
 import com.gzch.lsplat.work.mode.event.SerialNumberDeviceInfoEvent;
-import com.longse.lsapc.lsacore.mode.Result;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -360,11 +359,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
   
 
-    @Subscribe
-    public void getResult(Result result) {
-        Log.d(TAG, "getResult: "+ info+" >>>> " + result);
-
-    }
+//    @Subscribe
+//    public void getResult(Result result) {
+//        Log.d(TAG, "getResult: "+ info+" >>>> " + result);
+//
+//    }
 
     @Subscribe
     public void getResult(SerialNumberDeviceInfoEvent result) {

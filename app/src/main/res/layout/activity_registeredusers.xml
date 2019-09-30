@@ -156,4 +156,20 @@
         android:textColor="#ffffff"
         android:textSize="16sp" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:layout_marginTop="50dp">
+        <TextView
+            android:id="@+id/show_result"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_gravity="center"
+            android:paddingLeft="10dp"
+            android:paddingStart="10dp"
+            android:paddingRight="5dp"
+            android:paddingEnd="5dp"
+            />
+    </LinearLayout>
+
 </LinearLayout>
