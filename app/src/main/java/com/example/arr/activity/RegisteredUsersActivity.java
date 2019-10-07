@@ -9,12 +9,14 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.arr.R;
+
 import com.example.sdk.BitvisionSdk;
 import com.longse.lsapc.lsacore.mode.Result;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
+
 
 /**
  * @author Donvy_y
@@ -75,10 +77,10 @@ public class RegisteredUsersActivity extends AppCompatActivity implements View.O
         String account = mAccount.getText().toString().trim();
         String psw = mInputPsw.getText().toString().trim();
         String code = mInputCode.getText().toString().trim();
-        BitvisionSdk.registeredUsers(account, psw, code);
+        BitvisionSdk.registerUsers(account, psw, code);
     }
 
-    @Subscribe(threadMode = ThreadMode.MAIN)
+    @Subscribe
     public void getResult(Result result) {
         Log.d(TAG, "getResult: registerUsers >>>> " + result);
         mResult.setText("RegisteredUser >>> \n" + result.toString());

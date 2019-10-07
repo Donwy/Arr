@@ -15,28 +15,21 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
-/**
- * @author Donvy_y
- * @date 2019/9/30
- */
-public class UserLoginActivity extends AppCompatActivity implements View.OnClickListener{
+public class DeleteGroupActivity extends AppCompatActivity implements View.OnClickListener{
 
     private EditText mEditText;
-    private EditText mEditText1;
     private TextView mSubmit;
     private TextView mResult;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EventBus.getDefault().register(this);
-        setContentView(R.layout.activity_userlogin);
+        setContentView(R.layout.activity_deletegroup);
         initView();
     }
 
     private void initView() {
-        mEditText = findViewById(R.id.account);
-        mEditText1 = findViewById(R.id.input_psw);
+        mEditText = findViewById(R.id.cateId);
         mResult = findViewById(R.id.show_result);
         mSubmit = findViewById(R.id.submit);
         mSubmit.setOnClickListener(this);
@@ -54,16 +47,13 @@ public class UserLoginActivity extends AppCompatActivity implements View.OnClick
     }
 
     private void showResult() {
-        String account = mEditText.getText().toString().trim();
-        String psw = mEditText1.getText().toString().trim();
-        BitvisionSdk.userLogin("2851133868@qq.com","longse2019");
-        BitvisionSdk.userLogin(account,psw);
-        mResult.setText("UserLogin >>> \n" + account + psw);
+        String cateId = mEditText.getText().toString().trim();
+        BitvisionSdk.deleteGroup(cateId);
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void getResult(Result result) {
-        mResult.setText("UserLogin >>> \n" + result.toString());
+        mResult.setText("deleteGroup >>> \n" + result.toString());
     }
 
     @Override

@@ -1,8 +1,10 @@
 package com.example.arr.activity;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.util.Base64;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,28 +17,26 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
+import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
+
 /**
  * @author Donvy_y
  * @date 2019/9/30
  */
-public class UserLoginActivity extends AppCompatActivity implements View.OnClickListener{
+public class ModifyHeadActivity extends AppCompatActivity implements View.OnClickListener{
 
-    private EditText mEditText;
-    private EditText mEditText1;
     private TextView mSubmit;
     private TextView mResult;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EventBus.getDefault().register(this);
-        setContentView(R.layout.activity_userlogin);
+        setContentView(R.layout.activity_modifyhead);
         initView();
     }
 
     private void initView() {
-        mEditText = findViewById(R.id.account);
-        mEditText1 = findViewById(R.id.input_psw);
         mResult = findViewById(R.id.show_result);
         mSubmit = findViewById(R.id.submit);
         mSubmit.setOnClickListener(this);
@@ -50,20 +50,33 @@ public class UserLoginActivity extends AppCompatActivity implements View.OnClick
                 showResult();
                 break;
         }
-
     }
 
     private void showResult() {
-        String account = mEditText.getText().toString().trim();
-        String psw = mEditText1.getText().toString().trim();
-        BitvisionSdk.userLogin("2851133868@qq.com","longse2019");
-        BitvisionSdk.userLogin(account,psw);
-        mResult.setText("UserLogin >>> \n" + account + psw);
+        try{
+            InputStream inputStream = getResources().getAssets().open("img_head.jpg");
+            Bitmap image = BitmapFactory.decodeStream(inputStream);
+            String imgPath =  bitmapToString(image);
+            inputStream.close();
+
+            BitvisionSdk.modifyHead(imgPath);
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private String bitmapToString(Bitmap bitmap) {
+        String string = null;
+        ByteArrayOutputStream bStream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bStream);
+        byte[]bytes = bStream.toByteArray();
+        string = Base64.encodeToString(bytes, Base64.DEFAULT);
+        return string;
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void getResult(Result result) {
-        mResult.setText("UserLogin >>> \n" + result.toString());
+        mResult.setText("modifyHead>>> \n" + result.toString());
     }
 
     @Override

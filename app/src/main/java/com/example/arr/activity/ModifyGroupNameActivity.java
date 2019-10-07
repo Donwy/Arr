@@ -6,37 +6,33 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.arr.R;
 import com.example.sdk.BitvisionSdk;
+import com.gzch.lsplat.work.mode.event.GroupList;
 import com.longse.lsapc.lsacore.mode.Result;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
-/**
- * @author Donvy_y
- * @date 2019/9/30
- */
-public class UserLoginActivity extends AppCompatActivity implements View.OnClickListener{
+public class ModifyGroupNameActivity extends AppCompatActivity implements View.OnClickListener {
 
     private EditText mEditText;
     private EditText mEditText1;
     private TextView mSubmit;
     private TextView mResult;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EventBus.getDefault().register(this);
-        setContentView(R.layout.activity_userlogin);
+        setContentView(R.layout.activity_modifygroupname);
         initView();
     }
 
     private void initView() {
-        mEditText = findViewById(R.id.account);
-        mEditText1 = findViewById(R.id.input_psw);
+        mEditText = findViewById(R.id.name);
+        mEditText1 = findViewById(R.id.groupId);
+
         mResult = findViewById(R.id.show_result);
         mSubmit = findViewById(R.id.submit);
         mSubmit.setOnClickListener(this);
@@ -54,16 +50,16 @@ public class UserLoginActivity extends AppCompatActivity implements View.OnClick
     }
 
     private void showResult() {
-        String account = mEditText.getText().toString().trim();
-        String psw = mEditText1.getText().toString().trim();
-        BitvisionSdk.userLogin("2851133868@qq.com","longse2019");
-        BitvisionSdk.userLogin(account,psw);
-        mResult.setText("UserLogin >>> \n" + account + psw);
+        String name = mEditText.getText().toString().trim();
+        String groupId = mEditText1.getText().toString().trim();
+
+//        BitvisionSdk.modifyGroupName("1111","51935");
+        BitvisionSdk.modifyGroupName(name,groupId);
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
-    public void getResult(Result result) {
-        mResult.setText("UserLogin >>> \n" + result.toString());
+    public void getResult(GroupList result) {
+        mResult.setText("modifyGroupName >>> \n" + result.toString());
     }
 
     @Override
@@ -71,4 +67,5 @@ public class UserLoginActivity extends AppCompatActivity implements View.OnClick
         super.onDestroy();
         EventBus.getDefault().unregister(this);
     }
+
 }

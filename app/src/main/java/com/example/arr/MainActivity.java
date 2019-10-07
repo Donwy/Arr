@@ -1,4 +1,4 @@
-package com.example.arr.activity;
+package com.example.arr;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -11,13 +11,31 @@ import android.widget.RelativeLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.arr.R;
+import com.example.arr.activity.AddDeviceGroupActivity;
+import com.example.arr.activity.BindDeviceForSnActivity;
+import com.example.arr.activity.CheckUserAccountActivity;
+import com.example.arr.activity.DeleteDeviceActivity;
+import com.example.arr.activity.DeleteGroupActivity;
+import com.example.arr.activity.ForgetPasswordActivity;
+import com.example.arr.activity.GetDeviceGroupActivity;
+import com.example.arr.activity.GetDeviceInfoWithSnActivity;
+import com.example.arr.activity.GetServerIpActivity;
+import com.example.arr.activity.GetTheBoundDeviceListActivity;
+import com.example.arr.activity.ModifyDeviceNameActivity;
+import com.example.arr.activity.ModifyGroupNameActivity;
+import com.example.arr.activity.ModifyUserNicknameActivity;
+import com.example.arr.activity.RegisteredUsersActivity;
+import com.example.arr.activity.RetransmitVerificationCode;
+import com.example.arr.activity.UserInfoActivity;
+import com.example.arr.activity.UserLoginActivity;
 import com.example.sdk.BitvisionSdk;
 import com.gzch.lsplat.work.mode.UserInfo;
 import com.gzch.lsplat.work.mode.event.DeviceList;
 import com.gzch.lsplat.work.mode.event.GroupList;
 import com.gzch.lsplat.work.mode.event.LoginHistoryEvent;
 import com.gzch.lsplat.work.mode.event.SerialNumberDeviceInfoEvent;
+import com.longse.lsapc.lsacore.mode.Result;
+
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -168,93 +186,111 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     //Get Device Info With SN (通过序列号获取设备信息--1)
     private void getDeviceInfoWithSN() {
-        try{
-            info = "通过序列号获取设备信息";
-            BitvisionSdk.getDeviceInfoWithSN("1000000000460");
-        }catch (Exception e) {
-            e.printStackTrace();
-        }
+//        try{
+//            info = "绑定设备";
+            BitvisionSdk.bindDeviceForSN("1000000000460","2851133868@qq.com","longse","ABCDEF");
+//        }catch (Exception e) {
+//            e.printStackTrace();
+//        }
+        Intent intent = new Intent(MainActivity.this, GetDeviceInfoWithSnActivity.class);
+        startActivity(intent);
     }
 
     //Bind Device For SN (绑定设备--1)
     private void getBindDeviceForSN() {
-        try{
-            info = "绑定设备";
-            BitvisionSdk.bindDeviceForSN("1000000000460","2851133868@qq.com","longse","ABCDEF");
-        }catch (Exception e) {
-            e.printStackTrace();
-        }
+//        try{
+//            info = "绑定设备";
+//            BitvisionSdk.bindDeviceForSN("1000000000460","2851133868@qq.com","longse","ABCDEF");
+//        }catch (Exception e) {
+//            e.printStackTrace();
+//        }
+        Intent intent = new Intent(MainActivity.this, BindDeviceForSnActivity.class);
+        startActivity(intent);
     }
 
 
     //Modify Device Name (修改设备名--1)
     private void getModifyDeviceName() {
-        try{
-            info = "修改设备名";
-            BitvisionSdk.modifyDeviceName("1000000000460","460");
-        }catch (Exception e) {
-            e.printStackTrace();
-        }
+//        try{
+//            info = "修改设备名";
+//            BitvisionSdk.modifyDeviceName("1000000000460","460");
+//        }catch (Exception e) {
+//            e.printStackTrace();
+//        }
+        Intent intent = new Intent(MainActivity.this, ModifyDeviceNameActivity.class);
+        startActivity(intent);
     }
 
     //Delete Device (删除设备--1)
     private void getDeleteDevice() {
-        try{
-            info = "删除设备";
-            BitvisionSdk.deleteDevice("1000000000460");
-        }catch (Exception e) {
-            e.printStackTrace();
-        }
+//        try{
+//            info = "删除设备";
+//            BitvisionSdk.deleteDevice("1000000000460");
+//        }catch (Exception e) {
+//            e.printStackTrace();
+//        }
+        Intent intent = new Intent(MainActivity.this, DeleteDeviceActivity.class);
+        startActivity(intent);
     }
 
     //Get The Bound Device List (获取绑定设备列表--1)
     private void getBoundDeviceList() {
-        try{
-            info = "获取绑定设备列表";
-            BitvisionSdk.getTheBoundDeviceList();
-        }catch (Exception e) {
-            e.printStackTrace();
-        }
+//        try{
+//            info = "获取绑定设备列表";
+//            BitvisionSdk.getTheBoundDeviceList();
+//        }catch (Exception e) {
+//            e.printStackTrace();
+//        }
+        Intent intent = new Intent(MainActivity.this, GetTheBoundDeviceListActivity.class);
+        startActivity(intent);
     }
 
     //Add Device Group (新增设备分组--1)
     private void getAddDeviceGroup() {
-        try{
-            info = "新增设备分组";
-            BitvisionSdk.addDeviceGroup("123456");
-        }catch (Exception e) {
-            e.printStackTrace();
-        }
+//        try{
+//            info = "新增设备分组";
+//            BitvisionSdk.addDeviceGroup("123456");
+//        }catch (Exception e) {
+//            e.printStackTrace();
+//        }
+        Intent intent = new Intent(MainActivity.this, AddDeviceGroupActivity.class);
+        startActivity(intent);
     }
 
     //Modify Group Name (修改分组名字--1)
     private void getModifyGroupName() {
-        try{
-            info = "修改分组名";
-            BitvisionSdk.modifyGroupName("1111","51935");
-        }catch (Exception e) {
-            e.printStackTrace();
-        }
+//        try{
+//            info = "修改分组名";
+//            BitvisionSdk.modifyGroupName("1111","51935");
+//        }catch (Exception e) {
+//            e.printStackTrace();
+//        }
+        Intent intent = new Intent(MainActivity.this, ModifyGroupNameActivity.class);
+        startActivity(intent);
     }
 
     //Delete Group (删除分组--1)
     private void getDeleteGroup() {
-        try{
-            info = "删除分组";
-            BitvisionSdk.deleteGroup("51935");
-        }catch (Exception e) {
-            e.printStackTrace();
-        }
+//        try{
+//            info = "删除分组";
+//            BitvisionSdk.deleteGroup("51935");
+//        }catch (Exception e) {
+//            e.printStackTrace();
+//        }
+        Intent intent = new Intent(MainActivity.this, DeleteGroupActivity.class);
+        startActivity(intent);
     }
 
     //Get Device Group (获取设备分组--1)
     private void getDeviceGroup() {
-        try{
-            info = "获取设备分组";
-            BitvisionSdk.getDeviceGroup();
-        }catch (Exception e) {
-            e.printStackTrace();
-        }
+//        try{
+//            info = "获取设备分组";
+//            BitvisionSdk.getDeviceGroup();
+//        }catch (Exception e) {
+//            e.printStackTrace();
+//        }
+        Intent intent = new Intent(MainActivity.this, GetDeviceGroupActivity.class);
+        startActivity(intent);
     }
 
     //Modify Head (修改头像--0)
@@ -283,62 +319,74 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     //Modify User Nickname (修改昵称--1)
     private void getModifyUserNickname() {
-        try{
-            info = "修改昵称";
-            BitvisionSdk.modifyUserNickname("longse");
-        }catch (Exception e) {
-            e.printStackTrace();
-        }
+//        try{
+//            info = "修改昵称";
+//            BitvisionSdk.modifyUserNickname("longse");
+//        }catch (Exception e) {
+//            e.printStackTrace();
+//        }
+        Intent intent = new Intent(MainActivity.this, ModifyUserNicknameActivity.class);
+        startActivity(intent);
     }
 
-    //Get User Information (获取用户信息--1)
+//    Get User Information (获取用户信息--1)
     private void getUserInfo() {
-        try{
-            info = "获取用户信息";
-            BitvisionSdk.getUserInformation();
-        }catch (Exception e) {
-            e.printStackTrace();
-        }
+//        try{
+//            info = "获取用户信息";
+//            BitvisionSdk.getUserInformation();
+//        }catch (Exception e) {
+//            e.printStackTrace();
+//        }
+        Intent intent = new Intent(MainActivity.this, UserInfoActivity.class);
+        startActivity(intent);
     }
 
     //Check User Account (校验找回密码的账号--1)
     private void getCheckUserAccount() {
-        try{
-            info = "校验找回密码的账号";
-            BitvisionSdk.checkUserAccount("572419921@qq.com");
-        }catch (Exception e) {
-            e.printStackTrace();
-        }
+//        try{
+//            info = "校验找回密码的账号";
+//            BitvisionSdk.checkUserAccount("572419921@qq.com");
+//        }catch (Exception e) {
+//            e.printStackTrace();
+//        }
+        Intent intent = new Intent(MainActivity.this, CheckUserAccountActivity.class);
+        startActivity(intent);
     }
 
     //Forget Password (找回密码--1)
     private void getForgetPassword() {
-        try{
-            info = "找回密码";
-            BitvisionSdk.forgetPassword("7942", "572419921@qq.com", "b12345678");
-        }catch (Exception e) {
-            e.printStackTrace();
-        }
+//        try{
+//            info = "找回密码";
+//            BitvisionSdk.forgetPassword("7942", "572419921@qq.com", "b12345678");
+//        }catch (Exception e) {
+//            e.printStackTrace();
+//        }
+        Intent intent = new Intent(MainActivity.this, ForgetPasswordActivity.class);
+        startActivity(intent);
     }
 
     //User Login (用户登录--1)
     private void getUserLogin() {
-        try{
-            info = "用户登录";
-            BitvisionSdk.userLogin("2851133868@qq.com","longse2019");
-        }catch (Exception e) {
-            e.printStackTrace();
-        }
+//        try{
+//            info = "用户登录";
+////            BitvisionSdk.userLogin("2851133868@qq.com","longse2019");
+//        }catch (Exception e) {
+//            e.printStackTrace();
+//        }
+        Intent intent = new Intent(MainActivity.this, UserLoginActivity.class);
+        startActivity(intent);
     }
 
     //Retransmit Verification Code (重发验证码--1)
     private void getRetransmitVerificationCode() {
 //        try{
 //            info = "重发验证码";
-//            BitvisionSdk.retransmitVerificationCode("d572419921@163.com");
+//            BitvisionSdk.RetransmitVerificationCode("d572419921@163.com");
 //        }catch (Exception e) {
 //            e.printStackTrace();
 //        }
+        Intent intent = new Intent(MainActivity.this, RetransmitVerificationCode.class);
+        startActivity(intent);
     }
 
     //Registered users (用户注册)
@@ -350,21 +398,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     //Get Area Server Address (获取区域服务器地址--1)
     private void getServerIp() {
-        try{
-            info = "获取区域服务器地址";
-            BitvisionSdk.getAreaServerAddress(1);
-        }catch (Exception e) {
-            e.printStackTrace();
-        }
+//        try{
+//            info = "获取区域服务器地址";
+//            BitvisionSdk.getAreaServerAddress();
+//        }catch (Exception e) {
+//            e.printStackTrace();
+//        }
+        Intent intent = new Intent(MainActivity.this, GetServerIpActivity.class);
+        startActivity(intent);
     }
 
   
 
-//    @Subscribe
-//    public void getResult(Result result) {
-//        Log.d(TAG, "getResult: "+ info+" >>>> " + result);
-//
-//    }
+    @Subscribe
+    public void getResult(Result result) {
+        Log.d(TAG, "getResult: "+ info+" >>>> " + result);
+
+    }
 
     @Subscribe
     public void getResult(SerialNumberDeviceInfoEvent result) {

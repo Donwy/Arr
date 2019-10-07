@@ -15,31 +15,27 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
-/**
- * @author Donvy_y
- * @date 2019/9/30
- */
-public class UserLoginActivity extends AppCompatActivity implements View.OnClickListener{
+public class RetransmitVerificationCode extends AppCompatActivity implements View.OnClickListener{
 
     private EditText mEditText;
-    private EditText mEditText1;
     private TextView mSubmit;
+    private TextView mSubmit1;
     private TextView mResult;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EventBus.getDefault().register(this);
-        setContentView(R.layout.activity_userlogin);
+        setContentView(R.layout.activity_retransmitverificationcode);
         initView();
     }
 
     private void initView() {
         mEditText = findViewById(R.id.account);
-        mEditText1 = findViewById(R.id.input_psw);
         mResult = findViewById(R.id.show_result);
         mSubmit = findViewById(R.id.submit);
+        mSubmit1 = findViewById(R.id.submit1);
         mSubmit.setOnClickListener(this);
+        mSubmit1.setOnClickListener(this);
     }
 
 
@@ -49,21 +45,26 @@ public class UserLoginActivity extends AppCompatActivity implements View.OnClick
             case R.id.submit:
                 showResult();
                 break;
+            case R.id.submit1:
+                showResult1();
+                break;
         }
 
     }
 
+    private void showResult1() {
+        String account = mEditText.getText().toString().trim();
+        BitvisionSdk.retransmitVerificationCode(account);
+    }
+
     private void showResult() {
         String account = mEditText.getText().toString().trim();
-        String psw = mEditText1.getText().toString().trim();
-        BitvisionSdk.userLogin("2851133868@qq.com","longse2019");
-        BitvisionSdk.userLogin(account,psw);
-        mResult.setText("UserLogin >>> \n" + account + psw);
+        BitvisionSdk.registeredCode(account);
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void getResult(Result result) {
-        mResult.setText("UserLogin >>> \n" + result.toString());
+        mResult.setText("retransmitVerificationCode >>> \n" + result.toString());
     }
 
     @Override
@@ -71,4 +72,6 @@ public class UserLoginActivity extends AppCompatActivity implements View.OnClick
         super.onDestroy();
         EventBus.getDefault().unregister(this);
     }
+
+
 }
