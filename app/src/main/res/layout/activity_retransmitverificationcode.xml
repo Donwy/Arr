@@ -5,32 +5,34 @@
 
     <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="150dp"
         android:layout_marginStart="15dp"
         android:layout_marginLeft="15dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="15dp"
         android:layout_marginRight="15dp"
         android:orientation="vertical">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/title_registeredusers"
+                android:id="@+id/title_retransmit"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center_vertical"
                 android:background="@null"
                 android:gravity="center"
-                android:text="@string/serverip_string"
+                android:text="Retransmit Verification Code"
                 android:maxLength="64"
                 android:maxLines="1"
                 android:singleLine="true"
                 android:textColor="@color/cu_text_color"
                 android:textSize="16sp" />
         </LinearLayout>
+
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
@@ -73,98 +75,11 @@
             android:layout_height="1dp"
             android:background="@color/view_color" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:orientation="horizontal">
 
-            <ImageView
-                android:layout_width="17dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:src="@drawable/icon_password3x" />
-
-            <EditText
-                android:id="@+id/input_psw"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="center_vertical"
-                android:layout_marginStart="15dp"
-                android:layout_marginLeft="15dp"
-                android:layout_weight="1"
-                android:background="@null"
-                android:gravity="left|start|center_vertical"
-                android:hint="@string/input_psw"
-                android:maxLength="64"
-                android:maxLines="1"
-                android:singleLine="true"
-                android:textColor="@color/cu_text_color"
-                android:textColorHint="@color/text_choose_false"
-                android:textCursorDrawable="@drawable/edittext_cursor"
-                android:textSize="16sp" />
-
-            <ImageView
-                android:id="@+id/psw_show_img"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:scaleType="center" />
-        </LinearLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/view_color" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:layout_width="17dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:src="@drawable/icon_captcha_3x" />
-
-            <EditText
-                android:id="@+id/input_code"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="center_vertical"
-                android:layout_marginStart="15dp"
-                android:layout_marginLeft="15dp"
-                android:layout_weight="1"
-                android:background="@null"
-                android:gravity="left|start|center_vertical"
-                android:hint="@string/input_code"
-                android:inputType="number"
-                android:maxLength="4"
-                android:maxLines="1"
-                android:singleLine="true"
-                android:textColor="@color/cu_text_color"
-                android:textColorHint="@color/text_choose_false"
-                android:textCursorDrawable="@drawable/edittext_cursor"
-                android:textSize="16sp" />
-
-            <TextView
-                android:id="@+id/captcha"
-                android:layout_width="110dp"
-                android:layout_height="40dp"
-                android:layout_gravity="center_vertical"
-                android:layout_marginRight="2dp"
-                android:gravity="center"
-                android:background="@drawable/timer_shape"
-                android:textColor="#e60012" />
-        </LinearLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/view_color" />
     </LinearLayout>
 
     <TextView
-        android:id="@+id/register"
+        android:id="@+id/submit"
         android:layout_width="match_parent"
         android:layout_height="45dp"
         android:layout_marginStart="15dp"
@@ -175,10 +90,25 @@
         android:background="@drawable/login_bt"
         android:clickable="true"
         android:gravity="center"
-        android:text="register"
+        android:text="Retransmit Register Code"
         android:textColor="#ffffff"
         android:textSize="16sp" />
 
+    <TextView
+        android:id="@+id/submit1"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginRight="15dp"
+        android:background="@drawable/login_bt"
+        android:clickable="true"
+        android:gravity="center"
+        android:text="Retransmit ForgetPassword Code"
+        android:textColor="#ffffff"
+        android:textSize="16sp" />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="400dp"

@@ -10,7 +10,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.MainActivity">
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -18,8 +18,28 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.RegisteredUsersActivity">
-
         </activity>
+        <activity android:name=".activity.AddDeviceGroupActivity">
+        </activity>
+        <activity android:name=".activity.BindDeviceForSnActivity">
+        </activity>
+        <activity android:name=".activity.CheckUserAccountActivity">
+        </activity>
+        <activity android:name=".activity.DeleteDeviceActivity">
+        </activity>
+        <activity android:name=".activity.DeleteGroupActivity"/>
+        <activity android:name=".activity.ForgetPasswordActivity"/>
+        <activity android:name=".activity.GetDeviceInfoWithSnActivity"/>
+        <activity android:name=".activity.GetTheBoundDeviceListActivity"/>
+        <activity android:name=".activity.GetDeviceGroupActivity"/>
+        <activity android:name=".activity.GetServerIpActivity"/>
+        <activity android:name=".activity.ModifyDeviceNameActivity"/>
+        <activity android:name=".activity.ModifyGroupNameActivity"/>
+        <activity android:name=".activity.ModifyUserNicknameActivity"/>
+        <activity android:name=".activity.ModifyHeadActivity"/>
+        <activity android:name=".activity.RetransmitVerificationCode"/>
+        <activity android:name=".activity.UserLoginActivity"/>
+        <activity android:name=".activity.UserInfoActivity"/>
     </application>
 
 </manifest>
