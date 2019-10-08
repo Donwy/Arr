@@ -21,8 +21,8 @@ import org.greenrobot.eventbus.ThreadMode;
  */
 public class ForgetPasswordActivity extends AppCompatActivity implements View.OnClickListener{
 
-    private EditText mEditText;
-    private EditText mEditText1;
+    private EditText mAccount;
+    private EditText mPsw;
     private EditText mEditText2;
     private TextView mSubmit;
     private TextView mResult;
@@ -37,8 +37,8 @@ public class ForgetPasswordActivity extends AppCompatActivity implements View.On
     }
 
     private void initView() {
-        mEditText = findViewById(R.id.account);
-        mEditText1 = findViewById(R.id.input_psw);
+        mAccount = findViewById(R.id.account);
+        mPsw = findViewById(R.id.input_psw);
         mEditText2 = findViewById(R.id.input_code);
         mResult = findViewById(R.id.show_result);
         mSubmit = findViewById(R.id.submit);
@@ -62,13 +62,13 @@ public class ForgetPasswordActivity extends AppCompatActivity implements View.On
     }
 
     private void getCaptcha() {
-        String account = mEditText.getText().toString().trim();
+        String account = mAccount.getText().toString().trim();
         BitvisionSdk.retransmitVerificationCode(account);
     }
 
     private void showResult() {
-        String email = mEditText.getText().toString().trim();
-        String psw = mEditText1.getText().toString().trim();
+        String email = mAccount.getText().toString().trim();
+        String psw = mPsw.getText().toString().trim();
         String code = mEditText2.getText().toString().trim();
         BitvisionSdk.forgetPassword(code, email, psw);
     }

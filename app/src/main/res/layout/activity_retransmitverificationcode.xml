@@ -50,7 +50,7 @@
                 android:src="@drawable/icon_user3x" />
 
             <EditText
-                android:id="@+id/account"
+                android:id="@+id/account_r"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center_vertical"
@@ -60,13 +60,10 @@
                 android:background="@null"
                 android:gravity="left|start|center_vertical"
                 android:hint="@string/login_string"
-                android:inputType="textEmailAddress"
                 android:maxLength="64"
                 android:maxLines="1"
                 android:singleLine="true"
                 android:textColor="@color/cu_text_color"
-                android:textColorHint="@color/text_choose_false"
-                android:textCursorDrawable="@drawable/edittext_cursor"
                 android:textSize="16sp" />
         </LinearLayout>
 

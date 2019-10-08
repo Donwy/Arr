@@ -38,7 +38,6 @@
             android:layout_height="1dp"
             android:background="@color/view_color" />
 
-
     </LinearLayout>
 
     <TextView

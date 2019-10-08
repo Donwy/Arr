@@ -25,7 +25,7 @@ public class ModifyDeviceNameActivity extends AppCompatActivity implements View.
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        EventBus.getDefault().register(this);
+        EventBus.getDefault().register(this);
         setContentView(R.layout.activity_modifydevicename);
         initView();
     }
@@ -52,7 +52,7 @@ public class ModifyDeviceNameActivity extends AppCompatActivity implements View.
     private void showResult() {
         String equipId= mEditText.getText().toString().trim();
         String name = mEditText1.getText().toString().trim();
-        BitvisionSdk.modifyDeviceName("1000000000460","460");
+//        BitvisionSdk.modifyDeviceName("1000000000460","460");
         BitvisionSdk.modifyDeviceName(equipId,name);
     }
 

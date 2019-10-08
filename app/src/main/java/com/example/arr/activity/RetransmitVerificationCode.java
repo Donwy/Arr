@@ -30,7 +30,7 @@ public class RetransmitVerificationCode extends AppCompatActivity implements Vie
     }
 
     private void initView() {
-        mEditText = findViewById(R.id.account);
+        mEditText = findViewById(R.id.account_r);
         mResult = findViewById(R.id.show_result);
         mSubmit = findViewById(R.id.submit);
         mSubmit1 = findViewById(R.id.submit1);
