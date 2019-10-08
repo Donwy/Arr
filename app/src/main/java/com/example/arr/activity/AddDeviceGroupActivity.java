@@ -1,7 +1,6 @@
 package com.example.arr.activity;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -50,8 +49,7 @@ public class AddDeviceGroupActivity extends AppCompatActivity implements View.On
 
     private void showResult() {
         String name = mEditText.getText().toString().trim();
-//        BitvisionSdk.addDeviceGroup(name);
-        mResult.setText("addDeviceGroup >>> \n" + name);
+        BitvisionSdk.addDeviceGroup(name);
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)

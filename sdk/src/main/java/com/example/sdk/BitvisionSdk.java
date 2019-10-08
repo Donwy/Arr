@@ -1,22 +1,15 @@
 package com.example.sdk;
 
-import android.util.Log;
+import android.content.Context;
+
 import com.gzch.lsplat.work.WebDeviceDetailWork;
 import com.gzch.lsplat.work.WebDeviceWork;
 import com.gzch.lsplat.work.Work;
-import com.gzch.lsplat.work.api.HttpAPI;
 import com.gzch.lsplat.work.cmd.BitdogCmd;
-import com.gzch.lsplat.work.mode.EqupInfo;
-import com.gzch.lsplat.work.mode.UserInfo;
 import com.longse.lsapc.lsacore.BitdogInterface;
-import com.longse.lsapc.lsacore.mode.HttpResult;
 import com.longse.lsapc.lsacore.mode.Result;
-import com.longse.lsapc.lsacore.sapi.http.HttpHelper;
-import org.json.JSONException;
-import org.json.JSONObject;
-import java.util.Map;
-import static android.content.ContentValues.TAG;
 
+import org.json.JSONObject;
 
 
 /**
@@ -25,59 +18,68 @@ import static android.content.ContentValues.TAG;
  */
 public class BitvisionSdk {
 
-
-    public static void init(){
+    public static void init(Context ctx){
         BitdogInterface.getInstance().registeredWorker(Work.class);
         BitdogInterface.getInstance().registeredWorker(WebDeviceWork.class);
         BitdogInterface.getInstance().registeredWorker(WebDeviceDetailWork.class);
+        BitdogInterface.getInstance().init(ctx.getApplicationContext(),null);
     }
 
     /**
      * Get Area Server Address (获取区域服务器地址)
+     * @param isAsync  ASYNC 异步：1, SYNC 同步：2
      */
-    public static void getAreaServerAddress() {
-        Result r = BitdogInterface.getInstance().exec(BitdogCmd.GET_LOCALE_IP,"",BitdogInterface.SYNC_HANDLE);
+    public static void getAreaServerAddress(int isAsync) {
+        Result result = BitdogInterface.getInstance().exec(BitdogCmd.GET_LOCALE_IP,"",isAsync);
     }
 
+    /**
+     * Registered code (注册验证码)
+     * @param account Registered Account (注册账号)
+     */
+    public static void registeredCode(String account) {
+        Result result = BitdogInterface.getInstance().exec(BitdogCmd.SEND_REGISTER_EMAIL_CMD,
+                String.format("{\"user_name\":\"%s\"}", account), BitdogInterface.ASYNC_HANDLE);
+    }
 
     /**
-     * Register users (用户注册)
-     * @param account  Register Account (注册账号)
-     * @param psw      Register Password (注册密码)
-     * @param code     Register Verification Code (注册验证码)
+     * Registered users (用户注册)
+     * @param account  Registered Account (注册账号)
+     * @param psw      Registered Password (注册密码)
+     * @param code     Registered Verification Code (注册验证码)
      */
-    public static void registerUsers(String account, String psw, String code) {
+    public static void registeredUsers(String account, String psw, String code) {
         Result result = BitdogInterface.getInstance().exec(BitdogCmd.REGISTER_CMD,
                 String.format("{\"username\":\"%s\",\"password\":\"%s\",\"code\":\"%s\"}", account, psw, code),
                 BitdogInterface.ASYNC_HANDLE);
-        Log.d(TAG, "registerUsers: " + result);
+
     }
 
     /**
      * Retransmit Verification Code (重发验证码)
-     * @param str
+     * @param email  Email  (邮箱)
      */
-    public static void retransmitVerificationCode(String str) {
-        Result result = BitdogInterface.getInstance().exec(BitdogCmd.SEND_REGISTER_EMAIL_CMD,
-                String.format("{\"user_name\":\"%s\"}", str), BitdogInterface.ASYNC_HANDLE);
+    public static void retransmitVerificationCode(String email) {
+        Result result = BitdogInterface.getInstance().exec(BitdogCmd.SEND_EMAIL_CMD,
+                String.format("{\"user_name\":\"%s\"}", email), BitdogInterface.ASYNC_HANDLE);
     }
 
     /**
      * User Login (用户登录)
-     * @param account 
-     * @param psw 
+     * @param account  User Account (用户账户)
+     * @param psw  User Password (用户密码)
      */
-    public static void userLogin(String account, String psw, String keepPsw) {
+    public static void userLogin(String account, String psw) {
         Result result = BitdogInterface.getInstance().exec(BitdogCmd.LOGIN_CMD,
-                String.format("{\"account\":\"%s\",\"password\":\"%s\",\"local_ip\":\"%s\",\"save\":%d}", account, psw, "", Integer.valueOf(keepPsw)),
+                String.format("{\"account\":\"%s\",\"password\":\"%s\",\"local_ip\":\"%s\",\"save\":%d}", account, psw, "", Integer.valueOf(0)),
                 BitdogInterface.ASYNC_HANDLE);
     }
 
     /**
      * Forget Password (找回密码)
-     * @param code
-     * @param email
-     * @param psw 
+     * @param code  Verification Code (注册密码)
+     * @param email  Email  (邮箱)
+     * @param psw  Reset Password (重设密码)
      */
     public static void forgetPassword(String code, String email, String psw) {
         Result result = BitdogInterface.getInstance().exec(BitdogCmd.RESET_PASSWORD_CMD,
@@ -86,7 +88,7 @@ public class BitvisionSdk {
 
     /**
      * Check User Account (校验找回密码的账号)
-     * @param email
+     * @param email Email (邮箱)
      */
     public static void checkUserAccount(String email) {
         Result result = BitdogInterface.getInstance().exec(BitdogCmd.SEND_EMAIL_CMD,
@@ -95,15 +97,14 @@ public class BitvisionSdk {
 
     /**
      * Get User Information (获取用户信息)
-     * @param userInfo 
      */
-    public static void getUserInformation(UserInfo userInfo) {
-        Result result = BitdogInterface.getInstance().exec(BitdogCmd.JPUSH_AUTO_START_CMD, userInfo.getUserId(), BitdogInterface.SYNC_HANDLE);
+    public static void getUserInformation() {
+        Result result = BitdogInterface.getInstance().exec(BitdogCmd.REQUEST_USER_INFO_CMD, "", BitdogInterface.ASYNC_HANDLE);
     }
 
     /**
      * Modify User Nickname (修改昵称)
-     * @param detail
+     * @param detail Reset User Nickname (重设昵称)
      */
     public static void modifyUserNickname(String detail) {
         Result result = BitdogInterface.getInstance().exec(BitdogCmd.SET_NICK_NAME_CMD,
@@ -112,7 +113,7 @@ public class BitvisionSdk {
 
     /**
      * Modify Head (修改头像)
-     * @param imgPath
+     * @param imgPath   Path Of The Resetting Image (重设图片的路径)
      */
     public static void modifyHead(String imgPath) {
         Result result = BitdogInterface.getInstance().exec(BitdogCmd.UPLOAD_ICON_CMD,
@@ -121,27 +122,25 @@ public class BitvisionSdk {
 
     /**
      * Get Device Group (获取设备分组)
-     * @param euqiId
-     * @param cateId
      */
-    public static void getDeviceGroup(String euqiId, String cateId) {
-        Result result = BitdogInterface.getInstance().exec(BitdogCmd.CHANGE_DEVICE_GROUP_CMD,
-                String.format("{\"device_id\":\"%s\",\"cate_id\":\"%s\"}", euqiId, cateId), BitdogInterface.ASYNC_HANDLE);
+    public static void getDeviceGroup() {
+        Result result = BitdogInterface.getInstance().exec(BitdogCmd.REQUEST_DEVICE_GROUP_CMD,
+                "", BitdogInterface.ASYNC_HANDLE);
     }
 
     /**
      * Delete Group (删除分组)
-     * @param cateId
+     * @param  groupId The Id Of Selected Group (被选中组的Id)
      */
-    public static void deleteGroup(String cateId) {
+    public static void deleteGroup(String groupId) {
         Result result = BitdogInterface.getInstance().exec(BitdogCmd.DELETE_GROUP_CMD,
-                String.format("{\"cate_id\":\"%s\"}", cateId), BitdogInterface.ASYNC_HANDLE);
+                String.format("{\"cate_id\":\"%s\"}", groupId), BitdogInterface.ASYNC_HANDLE);
     }
 
     /**
      * Modify Group Name (修改分组名)
-     * @param name
-     * @param groupId
+     * @param name  The New Name Of Selected Group （被选中组的新名字）
+     * @param groupId The Id Of Selected Group (被选中组的Id)
      */
     public static void modifyGroupName(String name, String groupId) {
         Result result = BitdogInterface.getInstance().exec(BitdogCmd.UPDATE_GROUP_NAME_CMD,
@@ -151,12 +150,11 @@ public class BitvisionSdk {
 
     /**
      * Add Device Group (新增设备分组)
-     * @param name
+     * @param groupName The Name Of New Group (新增组名）
      */
-    public static void addDeviceGroup(String name) {
+    public static void addDeviceGroup(String groupName) {
         Result result = BitdogInterface.getInstance().exec(BitdogCmd.CREATE_GROUP_CMD,
-                String.format("{\"cat_name\":\"%s\"}", name),
-                BitdogInterface.ASYNC_HANDLE);
+                String.format("{\"cat_name\":\"%s\"}", groupName), BitdogInterface.ASYNC_HANDLE);
     }
 
     /**
@@ -168,32 +166,31 @@ public class BitvisionSdk {
 
     /**
      * Delete Device (删除设备)
-     * @param info
+     * @param deviceId Device Id(设备Id)
      */
-    public static void deleteDevice(EqupInfo info) {
+    public static void deleteDevice(String deviceId) {
         Result result = BitdogInterface.getInstance().exec(BitdogCmd.UNBIND_DEVICE_CMD,
-                String.format("{\"device_id\":\"%s\"}", info.getEqupId()), BitdogInterface.ASYNC_HANDLE);
+                String.format("{\"device_id\":\"%s\"}", deviceId), BitdogInterface.ASYNC_HANDLE);
     }
 
     /**
      * Modify Device Name (修改设备名)
-     * @param info
-     * @param name
+     * @param deviceId  Device Id (设备Id）
+     * @param deviceName  New Device Name (新的设备名)
      */
-    public static void modifyDeviceName(EqupInfo info, String name) {
+    public static void modifyDeviceName(String deviceId, String deviceName) {
         Result result = BitdogInterface.getInstance().exec(BitdogCmd.SET_DEVICE_NAME_CMD,
-                String.format("{\"device_id\":\"%s\",\"device_name\":\"%s\"}", info.getEqupId(), name), BitdogInterface.ASYNC_HANDLE);
+                String.format("{\"device_id\":\"%s\",\"device_name\":\"%s\"}", deviceId, deviceName), BitdogInterface.ASYNC_HANDLE);
     }
 
     /**
      * Bind Device For SN (绑定设备)
-     * @param device_id
-     * @param local_user
-     * @param local_pwd
-     * @param verify
+     * @param device_id   The Serial Number Of Device(设备的序列号)
+     * @param local_user User Account (用户账号)
+     * @param local_pwd User Password (用户密码)
+     * @param verify The Verify Code Of Device (设备的验证码) Tips：ABCDEF
      */
-    public static void bindDeviceForSN(String device_id, String local_user,String local_pwd,String verify) {
-        //{"device_id":"","local_user":"","local_pwd":"","verify":""}
+    public static void bindDeviceForSN(String device_id, String local_user, String local_pwd, String verify) {
         JSONObject params = new JSONObject();
         try {
             params.put("device_id", device_id);
@@ -209,23 +206,10 @@ public class BitvisionSdk {
 
     /**
      * Get Device Info With SN (通过序列号获取设备信息)
-     * @param serial
-     * @param devName
-     * @param account
-     * @param password
+     * @param serial  The Serial Number Of Device(设备的序列号)
      */
-    public static void getDeviceInfoWithSN(String serial, String devName, String account, String password) {
-        JSONObject params = new JSONObject();
-        try {
-            params.put("device_id", serial);
-            params.put("dev_name", devName);
-            params.put("account", account);
-            params.put("password", password);
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    public static void getDeviceInfoWithSN(String serial) {
         Result result = BitdogInterface.getInstance().exec(BitdogCmd.GET_DEVICE_INFO_BY_SERIAL_NUMBER_CMD,
-                params.toString(), BitdogInterface.ASYNC_HANDLE);
+                String.format("{\"device_id\":\"%s\"}", serial), BitdogInterface.ASYNC_HANDLE);
     }
 }

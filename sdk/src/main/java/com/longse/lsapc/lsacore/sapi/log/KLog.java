@@ -13,7 +13,9 @@ import com.longse.lsapc.lsacore.sapi.log.formatter.StringFormatterJSON;
 import com.longse.lsapc.lsacore.sapi.log.formatter.ThreadFormatter;
 import com.longse.lsapc.lsacore.sapi.log.printer.LogCatPrinter;
 import com.longse.lsapc.lsacore.sapi.log.printer.Printer;
-import com.longse.lsplat.lsacore.BuildConfig;
+
+
+import net.sqlcipher.BuildConfig;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -26,6 +26,7 @@ import java.io.InputStream;
  */
 public class ModifyHeadActivity extends AppCompatActivity implements View.OnClickListener{
 
+    private static final String TAG = "头像";
     private TextView mSubmit;
     private TextView mResult;
     @Override
@@ -54,7 +55,7 @@ public class ModifyHeadActivity extends AppCompatActivity implements View.OnClic
 
     private void showResult() {
         try{
-            InputStream inputStream = getResources().getAssets().open("img_head.jpg");
+            InputStream inputStream = getResources().getAssets().open("img_1.jpg");
             Bitmap image = BitmapFactory.decodeStream(inputStream);
             String imgPath =  bitmapToString(image);
             inputStream.close();

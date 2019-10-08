@@ -6,11 +6,9 @@ import android.view.View;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.arr.R;
 import com.example.sdk.BitvisionSdk;
 import com.longse.lsapc.lsacore.mode.Result;
-
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
@@ -48,9 +46,9 @@ public class GetServerIpActivity extends AppCompatActivity  implements View.OnCl
         }
 
     }
-    
+
     private void showResult() {
-        BitvisionSdk.getAreaServerAddress();
+        BitvisionSdk.getAreaServerAddress(1);
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)

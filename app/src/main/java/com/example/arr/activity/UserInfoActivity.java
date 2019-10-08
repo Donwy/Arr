@@ -2,7 +2,6 @@ package com.example.arr.activity;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,7 +9,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.arr.R;
 import com.example.sdk.BitvisionSdk;
 import com.gzch.lsplat.work.mode.UserInfo;
-import com.longse.lsapc.lsacore.mode.Result;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -22,7 +20,6 @@ import org.greenrobot.eventbus.ThreadMode;
  */
 public class UserInfoActivity extends AppCompatActivity implements View.OnClickListener{
 
-    private EditText mEditText;
     private TextView mSubmit;
     private TextView mResult;
     @Override
@@ -34,8 +31,6 @@ public class UserInfoActivity extends AppCompatActivity implements View.OnClickL
     }
 
     private void initView() {
-        mEditText = findViewById(R.id.account);
-
         mResult = findViewById(R.id.show_result);
         mSubmit = findViewById(R.id.submit);
         mSubmit.setOnClickListener(this);
@@ -54,8 +49,7 @@ public class UserInfoActivity extends AppCompatActivity implements View.OnClickL
     }
 
     private void showResult() {
-        String email = mEditText.getText().toString().trim();
-        BitvisionSdk.getUserInformation(email);
+        BitvisionSdk.getUserInformation();
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)

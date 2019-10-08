@@ -26,6 +26,8 @@ public class ForgetPasswordActivity extends AppCompatActivity implements View.On
     private EditText mEditText2;
     private TextView mSubmit;
     private TextView mResult;
+    private TextView mCaptcha;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,7 +42,9 @@ public class ForgetPasswordActivity extends AppCompatActivity implements View.On
         mEditText2 = findViewById(R.id.input_code);
         mResult = findViewById(R.id.show_result);
         mSubmit = findViewById(R.id.submit);
+        mCaptcha = findViewById(R.id.captcha);
         mSubmit.setOnClickListener(this);
+        mCaptcha.setOnClickListener(this);
     }
 
 
@@ -50,8 +54,16 @@ public class ForgetPasswordActivity extends AppCompatActivity implements View.On
             case R.id.submit:
                 showResult();
                 break;
+            case R.id.captcha:
+                getCaptcha();
+                break;
         }
 
+    }
+
+    private void getCaptcha() {
+        String account = mEditText.getText().toString().trim();
+        BitvisionSdk.retransmitVerificationCode(account);
     }
 
     private void showResult() {

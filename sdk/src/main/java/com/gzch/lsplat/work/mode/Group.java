@@ -123,7 +123,7 @@ public class Group implements Comparable<Group>, Serializable {
     @Override
     public String toString() {
         return "Group{" +
-//                "groupId='" + groupId + '\'' +
+                "groupId='" + groupId + '\'' +
                 ", groupName='" + groupName + '\'' +
 //                ", groupPosition='" + groupPosition + '\'' +
                 ", devices=" + devices +

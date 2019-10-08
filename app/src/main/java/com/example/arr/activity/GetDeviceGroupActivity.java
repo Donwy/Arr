@@ -2,14 +2,13 @@ package com.example.arr.activity;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.arr.R;
 import com.example.sdk.BitvisionSdk;
-import com.longse.lsapc.lsacore.mode.Result;
+import com.gzch.lsplat.work.mode.event.GroupList;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -21,8 +20,6 @@ import org.greenrobot.eventbus.ThreadMode;
  */
 public class GetDeviceGroupActivity extends AppCompatActivity implements View.OnClickListener{
 
-    private EditText mEditText;
-    private EditText mEditText1;
     private TextView mSubmit;
     private TextView mResult;
     @Override
@@ -34,8 +31,6 @@ public class GetDeviceGroupActivity extends AppCompatActivity implements View.On
     }
 
     private void initView() {
-        mEditText = findViewById(R.id.equiId);
-        mEditText1 = findViewById(R.id.cateId);
         mResult = findViewById(R.id.show_result);
         mSubmit = findViewById(R.id.submit);
         mSubmit.setOnClickListener(this);
@@ -53,13 +48,11 @@ public class GetDeviceGroupActivity extends AppCompatActivity implements View.On
     }
 
     private void showResult() {
-        String euqiId= mEditText.getText().toString().trim();
-        String cateId = mEditText1.getText().toString().trim();
-        BitvisionSdk.getDeviceGroup(euqiId,cateId);
+        BitvisionSdk.getDeviceGroup();
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
-    public void getResult(Result result) {
+    public void getResult(GroupList result) {
         mResult.setText("getDeviceGroup >>> \n" + result.toString());
     }
 

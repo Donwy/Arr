@@ -2,7 +2,7 @@ package com.gzch.lsplat.work.mode;
 
 import android.text.TextUtils;
 
-import com.gzch.lsplat.work.R;
+import com.example.sdk.R;
 import com.longse.lsapc.lsacore.BitdogInterface;
 
 import org.json.JSONException;

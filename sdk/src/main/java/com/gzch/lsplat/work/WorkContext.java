@@ -1,7 +1,5 @@
 package com.gzch.lsplat.work;
 
-import com.longse.lsapc.lsacore.BitdogInterface;
-
 /**
  * Created by lw on 2018/1/9.
  */
@@ -41,16 +39,6 @@ public final class WorkContext {
 
     public static final int BITDOG_APP = 2;
 
-    public static final int CONTEXT_APP;
+    public static final int CONTEXT_APP = BITDOG_APP;
 
-    static {
-        final String packageName = BitdogInterface.getInstance().getApplicationContext().getPackageName();
-        if ("com.gzch.lsplat.bitdog".equals(packageName)){
-            CONTEXT_APP = BITDOG_APP;
-        } else if ("com.xc.hdscreen".equals(packageName)){
-            CONTEXT_APP = FREEIP_APP;
-        } else {
-            CONTEXT_APP = BITDOG_APP;
-        }
-    }
 }

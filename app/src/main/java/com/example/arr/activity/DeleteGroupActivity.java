@@ -29,7 +29,7 @@ public class DeleteGroupActivity extends AppCompatActivity implements View.OnCli
     }
 
     private void initView() {
-        mEditText = findViewById(R.id.cateId);
+        mEditText = findViewById(R.id.groupId);
         mResult = findViewById(R.id.show_result);
         mSubmit = findViewById(R.id.submit);
         mSubmit.setOnClickListener(this);

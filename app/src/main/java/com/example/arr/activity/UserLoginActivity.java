@@ -56,16 +56,15 @@ public class UserLoginActivity extends AppCompatActivity implements View.OnClick
     private void showResult() {
         String account = mEditText.getText().toString().trim();
         String psw = mEditText1.getText().toString().trim();
-        BitvisionSdk.userLogin("2851133868@qq.com","longse2019");
+//        BitvisionSdk.userLogin("2851133868@qq.com","longse2019");
         BitvisionSdk.userLogin(account,psw);
-        mResult.setText("UserLogin >>> \n" + account + psw);
+//        mResult.setText("UserLogin >>> \n" + account + psw);
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void getResult(Result result) {
         mResult.setText("UserLogin >>> \n" + result.toString());
     }
-
     @Override
     protected void onDestroy() {
         super.onDestroy();

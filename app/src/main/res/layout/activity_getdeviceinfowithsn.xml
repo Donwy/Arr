@@ -5,7 +5,7 @@
 
     <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="150dp"
         android:layout_marginStart="15dp"
         android:layout_marginLeft="15dp"
         android:layout_marginTop="20dp"
@@ -71,102 +71,10 @@
             android:layout_height="1dp"
             android:background="@color/view_color" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:layout_width="17dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:src="@drawable/icon_captcha_3x" />
-
-            <EditText
-                android:id="@+id/devName"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="center_vertical"
-                android:layout_marginStart="15dp"
-                android:layout_marginLeft="15dp"
-                android:layout_weight="1"
-                android:background="@null"
-                android:gravity="left|start|center_vertical"
-                android:hint="devName"
-                android:maxLength="64"
-                android:maxLines="1"
-                android:singleLine="true"
-                android:textColor="@color/cu_text_color"
-                android:textSize="16sp" />
-
-        </LinearLayout>
-
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="@color/view_color" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:layout_width="17dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:src="@drawable/icon_user3x" />
-
-            <EditText
-                android:id="@+id/account"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="center_vertical"
-                android:layout_marginStart="15dp"
-                android:layout_marginLeft="15dp"
-                android:layout_weight="1"
-                android:background="@null"
-                android:gravity="left|start|center_vertical"
-                android:hint="account"
-                android:maxLength="4"
-                android:maxLines="1"
-                android:singleLine="true"
-                android:textColor="@color/cu_text_color"
-                android:textSize="16sp" />
-        </LinearLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/view_color" />
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:layout_width="17dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:src="@drawable/icon_password3x" />
-
-            <EditText
-                android:id="@+id/password"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="center_vertical"
-                android:layout_marginStart="15dp"
-                android:layout_marginLeft="15dp"
-                android:layout_weight="1"
-                android:background="@null"
-                android:gravity="left|start|center_vertical"
-                android:hint="password"
-                android:maxLength="4"
-                android:maxLines="1"
-                android:singleLine="true"
-                android:textColor="@color/cu_text_color"
-                android:textSize="16sp" />
-        </LinearLayout>
     </LinearLayout>
 
     <TextView
@@ -185,19 +93,27 @@
         android:textColor="#ffffff"
         android:textSize="16sp" />
 
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="400dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="50dp">
-        <TextView
-            android:id="@+id/show_result"
+
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:layout_gravity="center"
-            android:paddingLeft="10dp"
-            android:paddingStart="10dp"
-            android:paddingRight="5dp"
-            android:paddingEnd="5dp"
-            />
+            android:layout_height="wrap_content"
+            android:scrollbars="vertical">
+            <TextView
+                android:id="@+id/show_result"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:paddingStart="10dp"
+                android:paddingLeft="10dp"
+                android:paddingEnd="5dp"
+                android:paddingRight="5dp" />
+        </ScrollView>
     </LinearLayout>
 </LinearLayout>

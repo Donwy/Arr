@@ -4,6 +4,9 @@ package com.gzch.lsplat.work;
  * Created by lw on 2018/1/2.
  */
 
+
+import com.example.sdk.R;
+
 /**
  * 专门处理各种错误码的文字提示
  */

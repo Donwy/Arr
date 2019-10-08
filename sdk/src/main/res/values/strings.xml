@@ -6,4 +6,19 @@
         <item>200M</item>
         <item>500M</item>
     </string-array>
+    <string name="system_error">System error</string>
+    <string name="params_error">Request parameter error</string>
+    <string name="response_error">Response error</string>
+    <string name="wifi_closed">The current WiFi is not available, please check and turn on WiFi</string>
+    <string name="no_wifi">Did not find the WiFi, make sure to turn on the router, and enter the correct WiFi account</string>
+    <string name="wifi_connect_fail_error">WiFi connection failed</string>
+    <string name="no_cookie_error">Abnormal Cookie</string>
+    <string name="web_response_error">Server response failed</string>
+    <string name="http_connect_error">Network connection is not available, please check your network settings</string>
+    <string name="direct_devices">Local device</string>
+    <string name="direct_exists">The device already exists. Please check if the IP or port you entered is correct</string>
+    <string name="cloud_service">Cloud storage technology of payment</string>
+    <string name="favorites">My favorites</string>
+    <string name="wechat_install">Not installed WeChat or WeChat version is too low</string>
+    <string name="no_permission_device">Permission denied</string>
 </resources>

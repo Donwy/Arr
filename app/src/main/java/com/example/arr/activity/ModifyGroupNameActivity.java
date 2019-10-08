@@ -6,9 +6,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.arr.R;
 import com.example.sdk.BitvisionSdk;
-import com.gzch.lsplat.work.mode.event.GroupList;
 import com.longse.lsapc.lsacore.mode.Result;
 
 import org.greenrobot.eventbus.EventBus;
@@ -58,7 +58,7 @@ public class ModifyGroupNameActivity extends AppCompatActivity implements View.O
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
-    public void getResult(GroupList result) {
+    public void getResult(Result result) {
         mResult.setText("modifyGroupName >>> \n" + result.toString());
     }
 
