@@ -1,6 +1,7 @@
 package com.example.arr.activity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -17,6 +18,7 @@ import org.greenrobot.eventbus.ThreadMode;
 
 public class DeleteDeviceActivity extends AppCompatActivity implements View.OnClickListener{
 
+    private static final String TAG = "DeleteDeviceActivity";
     private EditText mEditText;
     private TextView mSubmit;
     private TextView mResult;
@@ -55,6 +57,7 @@ public class DeleteDeviceActivity extends AppCompatActivity implements View.OnCl
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void getResult(Result result) {
         mResult.setText("deleteDevice >>> \n" + result.toString());
+        Log.d(TAG, "getResult: "+ result.toString());
     }
 
     @Override

@@ -32,7 +32,7 @@ import java.io.InputStream;
  */
 public class ModifyHeadActivity extends AppCompatActivity implements View.OnClickListener{
 
-    private static final String TAG = "头像";
+    private static final String TAG = "ModifyHeadActivity";
     private TextView mSubmit;
     private TextView mResult;
 
@@ -101,6 +101,7 @@ public class ModifyHeadActivity extends AppCompatActivity implements View.OnClic
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void getResult(Result result) {
         mResult.setText("modifyHead>>> \n" + result.toString());
+        Log.d(TAG, "getResult: "+ result.toString());
     }
 
     @Override

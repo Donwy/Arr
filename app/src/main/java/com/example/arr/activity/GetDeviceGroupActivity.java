@@ -1,6 +1,7 @@
 package com.example.arr.activity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -20,6 +21,7 @@ import org.greenrobot.eventbus.ThreadMode;
  */
 public class GetDeviceGroupActivity extends AppCompatActivity implements View.OnClickListener{
 
+    private static final String TAG = "GetDeviceGroupActivity";
     private TextView mSubmit;
     private TextView mResult;
     @Override
@@ -54,6 +56,7 @@ public class GetDeviceGroupActivity extends AppCompatActivity implements View.On
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void getResult(GroupList result) {
         mResult.setText("getDeviceGroup >>> \n" + result.toString());
+        Log.d(TAG, "getResult: "+ result.toString());
     }
 
     @Override

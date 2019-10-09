@@ -50,7 +50,7 @@
                 android:src="@drawable/icon_user3x" />
 
             <EditText
-                android:id="@+id/detail"
+                android:id="@+id/nickname"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center_vertical"
@@ -59,7 +59,7 @@
                 android:layout_weight="1"
                 android:background="@null"
                 android:gravity="left|start|center_vertical"
-                android:hint="name"
+                android:hint="nickname"
                 android:maxLength="64"
                 android:maxLines="1"
                 android:singleLine="true"

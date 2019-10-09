@@ -1,6 +1,7 @@
 package com.example.arr.activity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -21,6 +22,7 @@ import org.greenrobot.eventbus.ThreadMode;
  */
 public class ForgetPasswordActivity extends AppCompatActivity implements View.OnClickListener{
 
+    private static final String TAG = "ForgetPasswordActivity";
     private EditText mAccount;
     private EditText mPsw;
     private EditText mEditText2;
@@ -68,14 +70,15 @@ public class ForgetPasswordActivity extends AppCompatActivity implements View.On
 
     private void showResult() {
         String email = mAccount.getText().toString().trim();
-        String psw = mPsw.getText().toString().trim();
+        String password = mPsw.getText().toString().trim();
         String code = mEditText2.getText().toString().trim();
-        BitvisionSdk.forgetPassword(code, email, psw);
+        BitvisionSdk.forgetPassword(email,password, code);
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void getResult(Result result) {
         mResult.setText("checkUserAccount >>> \n" + result.toString());
+        Log.d(TAG, "getResult: "+ result.toString());
     }
 
     @Override

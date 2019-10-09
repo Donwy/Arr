@@ -1,6 +1,7 @@
 package com.example.arr.activity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -17,6 +18,7 @@ import org.greenrobot.eventbus.ThreadMode;
 
 public class DeleteGroupActivity extends AppCompatActivity implements View.OnClickListener{
 
+    private static final String TAG = "DeleteGroupActivity";
     private EditText mEditText;
     private TextView mSubmit;
     private TextView mResult;
@@ -47,13 +49,14 @@ public class DeleteGroupActivity extends AppCompatActivity implements View.OnCli
     }
 
     private void showResult() {
-        String cateId = mEditText.getText().toString().trim();
-        BitvisionSdk.deleteGroup(cateId);
+        String groupId = mEditText.getText().toString().trim();
+        BitvisionSdk.deleteGroup(groupId);
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void getResult(Result result) {
         mResult.setText("deleteGroup >>> \n" + result.toString());
+        Log.d(TAG, "getResult: "+ result.toString());
     }
 
     @Override

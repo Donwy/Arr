@@ -149,6 +149,7 @@
                 android:layout_height="40dp"
                 android:layout_gravity="center_vertical"
                 android:layout_marginRight="2dp"
+                android:text="send"
                 android:background="@drawable/timer_shape"
                 android:gravity="center"
                 android:textColor="#e60012" />

@@ -48,13 +48,13 @@ public class GetServerIpActivity extends AppCompatActivity  implements View.OnCl
     }
 
     private void showResult() {
-        BitvisionSdk.getAreaServerAddress(1);
+        BitvisionSdk.getAreaServerAddress(2);
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void getResult(Result result) {
-        Log.d(TAG, "getResult: registerUsers >>>> " + result);
         mResult.setText("RegisteredUser >>> \n" + result.toString());
+        Log.d(TAG, "getResult: "+ result.toString());
     }
     @Override
     protected void onDestroy() {

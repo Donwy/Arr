@@ -4,13 +4,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.RelativeLayout;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.arr.R;
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+
     private static final String TAG = "MainActivity";
     private RelativeLayout getServerIpRel;
     private RelativeLayout registeredUsersRel;
@@ -31,12 +30,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private RelativeLayout bindDeviceForSNRel;
     private RelativeLayout DeviceInfoWithSNRel;
 
-    private String info = "";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        EventBus.getDefault().register(this);
         setContentView(R.layout.activity_main);
         initView();
 
@@ -46,7 +42,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void initView() {
         getServerIpRel = findViewById(R.id.getServerIp_rel);
         registeredUsersRel = findViewById(R.id.registeredUsers_rel);
-        retransmitVerificationCodeRel = findViewById(R.id.retransmitVerificationCode_rel);
+//        retransmitVerificationCodeRel = findViewById(R.id.retransmitVerificationCode_rel);
         userLoginRel = findViewById(R.id.userLogin_rel);
         forgetPasswordRel = findViewById(R.id.forgetPassword_rel);
         checkUserAccountRel = findViewById(R.id.checkUserAccount_rel);
@@ -68,7 +64,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         getServerIpRel.setOnClickListener(this);
         registeredUsersRel.setOnClickListener(this);
-        retransmitVerificationCodeRel.setOnClickListener(this);
+//        retransmitVerificationCodeRel.setOnClickListener(this);
         userLoginRel.setOnClickListener(this);
         forgetPasswordRel.setOnClickListener(this);
         checkUserAccountRel.setOnClickListener(this);
@@ -97,9 +93,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.registeredUsers_rel:
                 getRegisteredUsers();
                 break;
-            case R.id.retransmitVerificationCode_rel:
-                getRetransmitVerificationCode();
-                break;
+//            case R.id.retransmitVerificationCode_rel:
+//                getRetransmitVerificationCode();
+//                break;
             case R.id.userLogin_rel:
                 getUserLogin();
                 break;
@@ -250,10 +246,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     //Retransmit Verification Code (重发验证码--1)
-    private void getRetransmitVerificationCode() {
-        Intent intent = new Intent(MainActivity.this, RetransmitVerificationCode.class);
-        startActivity(intent);
-    }
+//    private void getRetransmitVerificationCode() {
+//        Intent intent = new Intent(MainActivity.this, RetransmitVerificationCode.class);
+//        startActivity(intent);
+//    }
 
     //Registered users (用户注册)
     private void getRegisteredUsers() {
@@ -267,44 +263,4 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Intent intent = new Intent(MainActivity.this, GetServerIpActivity.class);
         startActivity(intent);
     }
-
-  
-//
-//    @Subscribe
-//    public void getResult(Result result) {
-//        Log.d(TAG, "getResult: "+ info+" >>>> " + result);
-//
-//    }
-//
-//    @Subscribe
-//    public void getResult(SerialNumberDeviceInfoEvent result) {
-//        Log.d(TAG, "getResult: "+ info+" >>>> " + result);
-//    }
-//
-//    @Subscribe
-//    public void getResult(LoginHistoryEvent result) {
-//        Log.d(TAG, "getResult: "+ info+" >>>> " + result);
-//    }
-//
-//    @Subscribe
-//    public void getResult(UserInfo result) {
-//        Log.d(TAG, "getResult: "+ info+" >>>> " + result);
-//    }
-//
-//    @Subscribe
-//    public void getResult(GroupList result) {
-//        Log.d(TAG, "getResult: "+ info+" >>>> " + result);
-//    }
-//
-//    @Subscribe
-//    public void getResult(DeviceList result) {
-//        Log.d(TAG, "getResult: "+ info+" >>>> " + result);
-//    }
-
-//
-//    @Override
-//    protected void onDestroy() {
-//        super.onDestroy();
-//        EventBus.getDefault().unregister(this);
-//    }
 }

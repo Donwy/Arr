@@ -1,6 +1,8 @@
 package com.example.arr.activity;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -21,6 +23,7 @@ import org.greenrobot.eventbus.ThreadMode;
  */
 public class ModifyUserNicknameActivity extends AppCompatActivity implements View.OnClickListener{
 
+    private static final String TAG = "ModifyUserNicknameActivity";
     private EditText mEditText;
     private TextView mSubmit;
     private TextView mResult;
@@ -33,7 +36,7 @@ public class ModifyUserNicknameActivity extends AppCompatActivity implements Vie
     }
 
     private void initView() {
-        mEditText = findViewById(R.id.detail);
+        mEditText = findViewById(R.id.nickname);
         mResult = findViewById(R.id.show_result);
         mSubmit = findViewById(R.id.submit);
         mSubmit.setOnClickListener(this);
@@ -51,15 +54,16 @@ public class ModifyUserNicknameActivity extends AppCompatActivity implements Vie
     }
 
     private void showResult() {
-        String detail = mEditText.getText().toString().trim();
-//        BitvisionSdk.modifyUserNickname("longse");
-        BitvisionSdk.modifyUserNickname(detail);
+        String nickname = mEditText.getText().toString().trim();
+        BitvisionSdk.modifyUserNickname(nickname);
 
     }
 
+    @SuppressLint("LongLogTag")
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void getResult(Result result) {
         mResult.setText("modifyUserNickname >>> \n" + result.toString());
+        Log.d(TAG, "getResult: "+ result.toString());
     }
 
     @Override

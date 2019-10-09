@@ -1,6 +1,8 @@
 package com.example.arr.activity;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -17,6 +19,7 @@ import org.greenrobot.eventbus.ThreadMode;
 
 public class GetDeviceInfoWithSnActivity extends AppCompatActivity implements View.OnClickListener{
 
+    private static final String TAG = "GetDeviceInfoWithSnActivity";
     private EditText mEditText;
     private TextView mSubmit;
     private TextView mResult;
@@ -48,13 +51,14 @@ public class GetDeviceInfoWithSnActivity extends AppCompatActivity implements Vi
 
     private void showResult() {
         String serial = mEditText.getText().toString().trim();
-//        BitvisionSdk.getDeviceInfoWithSN("1000000000460");
         BitvisionSdk.getDeviceInfoWithSN(serial);
     }
 
+    @SuppressLint("LongLogTag")
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void getResult(SerialNumberDeviceInfoEvent result) {
         mResult.setText("getDeviceInfoWithSN >>> \n" +  result.toString());
+        Log.d(TAG, "getResult: "+ result.toString());
     }
 
     @Override

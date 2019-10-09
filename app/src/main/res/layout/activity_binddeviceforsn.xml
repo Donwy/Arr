@@ -165,6 +165,16 @@
                 android:singleLine="true"
                 android:textColor="@color/cu_text_color"
                 android:textSize="16sp" />
+            <TextView
+                android:id="@+id/check"
+                android:layout_width="110dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="2dp"
+                android:text="check"
+                android:background="@drawable/timer_shape"
+                android:gravity="center"
+                android:textColor="#e60012" />
         </LinearLayout>
     </LinearLayout>
 

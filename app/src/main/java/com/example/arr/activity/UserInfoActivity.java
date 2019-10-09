@@ -1,6 +1,7 @@
 package com.example.arr.activity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -20,6 +21,7 @@ import org.greenrobot.eventbus.ThreadMode;
  */
 public class UserInfoActivity extends AppCompatActivity implements View.OnClickListener{
 
+    private static final String TAG = "UserInfoActivity";
     private TextView mSubmit;
     private TextView mResult;
     @Override
@@ -55,6 +57,7 @@ public class UserInfoActivity extends AppCompatActivity implements View.OnClickL
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void getResult(UserInfo result) {
         mResult.setText("getUserInformation >>> \n" + result.toString());
+        Log.d(TAG, "getResult: "+ result.toString());
     }
 
     @Override

@@ -73,15 +73,16 @@ public class RegisteredUsersActivity extends AppCompatActivity implements View.O
 
     private void submit() {
         String account = mAccount.getText().toString().trim();
-        String psw = mInputPsw.getText().toString().trim();
+        String password = mInputPsw.getText().toString().trim();
         String code = mInputCode.getText().toString().trim();
-        BitvisionSdk.registeredUsers(account, psw, code);
+        BitvisionSdk.registeredUsers(account, password, code);
     }
 
     @Subscribe
     public void getResult(Result result) {
-        Log.d(TAG, "getResult: registerUsers >>>> " + result);
+
         mResult.setText("RegisteredUser >>> \n" + result.toString());
+        Log.d(TAG, "getResult: "+ result.toString());
     }
 
     @Override

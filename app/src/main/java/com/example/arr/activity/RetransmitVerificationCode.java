@@ -1,6 +1,7 @@
 package com.example.arr.activity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -17,6 +18,7 @@ import org.greenrobot.eventbus.ThreadMode;
 
 public class RetransmitVerificationCode extends AppCompatActivity implements View.OnClickListener{
 
+    private static final String TAG = "RetransmitVerificationCode";
     private EditText mEditText;
     private TextView mSubmit;
     private TextView mSubmit1;
@@ -65,6 +67,7 @@ public class RetransmitVerificationCode extends AppCompatActivity implements Vie
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void getResult(Result result) {
         mResult.setText("retransmitVerificationCode >>> \n" + result.toString());
+        Log.d(TAG, "getResult: "+ result.toString());
     }
 
     @Override

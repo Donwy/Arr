@@ -1,6 +1,7 @@
 package com.example.arr.activity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -17,6 +18,7 @@ import org.greenrobot.eventbus.ThreadMode;
 
 public class ModifyGroupNameActivity extends AppCompatActivity implements View.OnClickListener {
 
+    private static final String TAG = "ModifyGroupNameActivity";
     private EditText mEditText;
     private EditText mEditText1;
     private TextView mSubmit;
@@ -30,7 +32,7 @@ public class ModifyGroupNameActivity extends AppCompatActivity implements View.O
     }
 
     private void initView() {
-        mEditText = findViewById(R.id.name);
+        mEditText = findViewById(R.id.groupName);
         mEditText1 = findViewById(R.id.groupId);
 
         mResult = findViewById(R.id.show_result);
@@ -50,16 +52,17 @@ public class ModifyGroupNameActivity extends AppCompatActivity implements View.O
     }
 
     private void showResult() {
-        String name = mEditText.getText().toString().trim();
+        String groupName = mEditText.getText().toString().trim();
         String groupId = mEditText1.getText().toString().trim();
 
 //        BitvisionSdk.modifyGroupName("1111","51935");
-        BitvisionSdk.modifyGroupName(name,groupId);
+        BitvisionSdk.modifyGroupName(groupName,groupId);
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void getResult(Result result) {
         mResult.setText("modifyGroupName >>> \n" + result.toString());
+        Log.d(TAG, "getResult: "+ result.toString());
     }
 
     @Override

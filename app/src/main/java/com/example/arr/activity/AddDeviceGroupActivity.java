@@ -1,6 +1,7 @@
 package com.example.arr.activity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -17,6 +18,7 @@ import org.greenrobot.eventbus.ThreadMode;
 
 public class AddDeviceGroupActivity extends AppCompatActivity implements View.OnClickListener{
 
+    private static final String TAG = "AddDeviceGroupActivity";
     private EditText mEditText;
     private TextView mSubmit;
     private TextView mResult;
@@ -48,13 +50,14 @@ public class AddDeviceGroupActivity extends AppCompatActivity implements View.On
     }
 
     private void showResult() {
-        String name = mEditText.getText().toString().trim();
-        BitvisionSdk.addDeviceGroup(name);
+        String newGroupName = mEditText.getText().toString().trim();
+        BitvisionSdk.addDeviceGroup(newGroupName);
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void getResult(Result result) {
         mResult.setText("addDeviceGroup >>> \n" + result.toString());
+        Log.d(TAG, "getResult: "+ result.toString());
     }
 
     @Override

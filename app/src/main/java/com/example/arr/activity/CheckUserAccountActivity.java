@@ -1,6 +1,7 @@
 package com.example.arr.activity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -20,6 +21,8 @@ import org.greenrobot.eventbus.ThreadMode;
  * @date 2019/9/30
  */
 public class CheckUserAccountActivity extends AppCompatActivity implements View.OnClickListener{
+
+    private static final String TAG = "CheckUserAccountActivit";
     private EditText mEditText;
     private TextView mSubmit;
     private TextView mResult;
@@ -58,6 +61,7 @@ public class CheckUserAccountActivity extends AppCompatActivity implements View.
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void getResult(Result result) {
         mResult.setText("checkUserAccount >>> \n" + result.toString());
+        Log.d(TAG, "getResult: "+ result.toString());
     }
 
     @Override

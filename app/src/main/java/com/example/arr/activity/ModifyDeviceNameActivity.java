@@ -1,6 +1,8 @@
 package com.example.arr.activity;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -17,6 +19,7 @@ import org.greenrobot.eventbus.ThreadMode;
 
 public class ModifyDeviceNameActivity extends AppCompatActivity implements View.OnClickListener {
 
+    private static final String TAG = "ModifyDeviceNameActivity";
     private EditText mEditText;
     private EditText mEditText1;
 
@@ -50,15 +53,16 @@ public class ModifyDeviceNameActivity extends AppCompatActivity implements View.
     }
 
     private void showResult() {
-        String equipId= mEditText.getText().toString().trim();
-        String name = mEditText1.getText().toString().trim();
-//        BitvisionSdk.modifyDeviceName("1000000000460","460");
-        BitvisionSdk.modifyDeviceName(equipId,name);
+        String deviceId= mEditText.getText().toString().trim();
+        String devicename = mEditText1.getText().toString().trim();
+        BitvisionSdk.modifyDeviceName(deviceId,devicename);
     }
 
+    @SuppressLint("LongLogTag")
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void getResult(Result result) {
         mResult.setText("modifyDeviceName >>> \n" + result.toString());
+        Log.d(TAG, "getResult: "+ result.toString());
     }
 
     @Override

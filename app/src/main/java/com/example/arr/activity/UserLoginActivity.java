@@ -1,6 +1,7 @@
 package com.example.arr.activity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -21,6 +22,7 @@ import org.greenrobot.eventbus.ThreadMode;
  */
 public class UserLoginActivity extends AppCompatActivity implements View.OnClickListener{
 
+    private static final String TAG = "UserLoginActivity";
     private EditText mEditText;
     private EditText mEditText1;
     private TextView mSubmit;
@@ -55,15 +57,14 @@ public class UserLoginActivity extends AppCompatActivity implements View.OnClick
 
     private void showResult() {
         String account = mEditText.getText().toString().trim();
-        String psw = mEditText1.getText().toString().trim();
-//        BitvisionSdk.userLogin("2851133868@qq.com","longse2019");
-        BitvisionSdk.userLogin(account,psw);
-//        mResult.setText("UserLogin >>> \n" + account + psw);
+        String password = mEditText1.getText().toString().trim();
+        BitvisionSdk.userLogin(account,password);
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void getResult(Result result) {
         mResult.setText("UserLogin >>> \n" + result.toString());
+        Log.d(TAG, "getResult: "+ result.toString());
     }
     @Override
     protected void onDestroy() {

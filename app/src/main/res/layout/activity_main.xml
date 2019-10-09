@@ -80,37 +80,37 @@
                     android:background="@color/group_edit_delete_line" />
             </RelativeLayout>
 
-            <RelativeLayout
-                android:id="@+id/retransmitVerificationCode_rel"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:background="@drawable/menu_bg_ripple"
-                android:clickable="true">
+            <!--<RelativeLayout-->
+                <!--android:id="@+id/retransmitVerificationCode_rel"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="50dp"-->
+                <!--android:background="@drawable/menu_bg_ripple"-->
+                <!--android:clickable="true">-->
 
-                <TextView
-                    android:id="@+id/retransmitVerificationCode"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="10dp"
-                    android:text="retransmitVerificationCode"
-                    android:textColor="@color/cu_text_color"
-                    android:textSize="16sp" />
+                <!--<TextView-->
+                    <!--android:id="@+id/retransmitVerificationCode"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_centerVertical="true"-->
+                    <!--android:layout_marginLeft="10dp"-->
+                    <!--android:text="retransmitVerificationCode"-->
+                    <!--android:textColor="@color/cu_text_color"-->
+                    <!--android:textSize="16sp" />-->
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginRight="10dp"
-                    android:src="@drawable/icon_arrow_3x" />
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_alignParentBottom="true"
-                    android:layout_marginLeft="10dp"
-                    android:background="@color/group_edit_delete_line" />
-            </RelativeLayout>
+                <!--<ImageView-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_alignParentRight="true"-->
+                    <!--android:layout_centerVertical="true"-->
+                    <!--android:layout_marginRight="10dp"-->
+                    <!--android:src="@drawable/icon_arrow_3x" />-->
+                <!--<View-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="1dp"-->
+                    <!--android:layout_alignParentBottom="true"-->
+                    <!--android:layout_marginLeft="10dp"-->
+                    <!--android:background="@color/group_edit_delete_line" />-->
+            <!--</RelativeLayout>-->
 
             <RelativeLayout
                 android:id="@+id/userLogin_rel"
@@ -306,10 +306,43 @@
             </RelativeLayout>
 
             <RelativeLayout
-                android:id="@+id/deviceGroup_rel"
+                android:id="@+id/addDeviceGroup_rel"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginTop="20dp"
+                android:background="@drawable/menu_bg_ripple"
+                android:clickable="true">
+
+                <TextView
+                    android:id="@+id/addDeviceGroup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:text="addDeviceGroup"
+                    android:textColor="@color/cu_text_color"
+                    android:textSize="16sp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"
+                    android:src="@drawable/icon_arrow_3x" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginLeft="10dp"
+                    android:background="@color/group_edit_delete_line" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/deviceGroup_rel"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+
                 android:background="@drawable/menu_bg_ripple"
                 android:clickable="true">
 
@@ -401,37 +434,7 @@
                     android:layout_marginLeft="10dp"
                     android:background="@color/group_edit_delete_line" />
             </RelativeLayout>
-            <RelativeLayout
-                android:id="@+id/addDeviceGroup_rel"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:background="@drawable/menu_bg_ripple"
-                android:clickable="true">
 
-                <TextView
-                    android:id="@+id/addDeviceGroup"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="10dp"
-                    android:text="addDeviceGroup"
-                    android:textColor="@color/cu_text_color"
-                    android:textSize="16sp" />
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginRight="10dp"
-                    android:src="@drawable/icon_arrow_3x" />
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_alignParentBottom="true"
-                    android:layout_marginLeft="10dp"
-                    android:background="@color/group_edit_delete_line" />
-            </RelativeLayout>
 
             <RelativeLayout
                 android:id="@+id/theBoundDeviceList_rel"
