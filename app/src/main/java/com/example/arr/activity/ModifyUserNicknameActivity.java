@@ -71,5 +71,4 @@ public class ModifyUserNicknameActivity extends AppCompatActivity implements Vie
         super.onDestroy();
         EventBus.getDefault().unregister(this);
     }
-
 }

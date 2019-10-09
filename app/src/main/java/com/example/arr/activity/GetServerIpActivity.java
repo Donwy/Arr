@@ -48,7 +48,7 @@ public class GetServerIpActivity extends AppCompatActivity  implements View.OnCl
     }
 
     private void showResult() {
-        BitvisionSdk.getAreaServerAddress(2);
+        BitvisionSdk.getAreaServerAddress(1);
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
