@@ -10,10 +10,8 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.arr.MediaUtils;
 import com.example.arr.R;
 import com.example.sdk.BitvisionSdk;
-import com.gzch.lsplat.work.file.FileManager;
 import com.longse.lsapc.lsacore.mode.Result;
 
 import org.greenrobot.eventbus.EventBus;
@@ -36,19 +34,12 @@ public class ModifyHeadActivity extends AppCompatActivity implements View.OnClic
     private TextView mSubmit;
     private TextView mResult;
 
-    private File tempDir = null;
-    private File tempFile = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EventBus.getDefault().register(this);
         setContentView(R.layout.activity_modifyhead);
         initView();
-        tempDir = new File(FileManager.getIconFileDir());
-        if (!tempDir.exists()) {
-            tempDir.mkdirs();
-        }
-        tempFile = new File(tempDir, MediaUtils.getPhotoFileName());
     }
 
     private void initView() {

@@ -195,7 +195,7 @@ public class BitvisionSdk {
         try {
             params.put("device_id", device_id);
             params.put("local_user", local_user);
-            params.put("local_psw", local_psw);
+            params.put("local_pwd", local_psw);
             params.put("verify", verify);
         } catch (Exception e){
             e.printStackTrace();
